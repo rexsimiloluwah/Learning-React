@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {Navbar, NavbarBrand} from 'reactstrap';
+import ArtistDetails from './components/ArtistComponent'
 import './App.css';
+import {artists} from './data/artists'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+class App extends Component {
+
+  // Declaring the constructor for the state 
+  constructor(props){
+    super(props);
+
+    this.state = {
+      artists: artists
+    }
+  }
+
+  render() {
+    
+    return (
+    <div>
+      <Navbar dark color = "primary">
+        <div clasName = "container">
+          <NavbarBrand href = "/">Music Hub</NavbarBrand>
+        </div>
+
+      </Navbar>
+
+      <ArtistDetails  artists = {this.state.artists} />
     </div>
   );
+
+    }
 }
 
 export default App;
